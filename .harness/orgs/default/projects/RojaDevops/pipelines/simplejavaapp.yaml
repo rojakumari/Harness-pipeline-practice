@@ -31,7 +31,9 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Sh
-                    command: mvn clean install
+                    command: |-
+                      cd simple-java-app
+                      mvn clean install
           platform:
             os: Linux
             arch: Amd64
