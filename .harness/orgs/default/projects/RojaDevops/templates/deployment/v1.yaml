@@ -1,0 +1,15 @@
+template:
+  name: deployment
+  identifier: deployment
+  versionLabel: v1
+  type: Step
+  projectIdentifier: RojaDevops
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Run
+    spec:
+      connectorRef: docker
+      image: bitnami/kubectl:latest
+      shell: Sh
+      command: kubectl apply -f <+input.manifestPath>
