@@ -1,0 +1,42 @@
+pipeline:
+  name: simple-java-app
+  identifier: simplejavaapp
+  projectIdentifier: RojaDevops
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: git
+        repoName: Harness-pipeline-practice
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: harnessCI
+                harnessImageConnectorRef: account.harnessImage
+                os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: mvn clean install
