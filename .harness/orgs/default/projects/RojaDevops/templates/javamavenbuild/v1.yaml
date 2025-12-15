@@ -1,0 +1,16 @@
+template:
+  name: java-maven-build
+  identifier: javamavenbuild
+  versionLabel: v1
+  type: Step
+  projectIdentifier: RojaDevops
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Run
+    spec:
+      connectorRef: account.harnessImage
+      shell: Sh
+      command: |-
+        cd simple-java-app
+        mvn clean install
