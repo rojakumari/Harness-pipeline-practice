@@ -1,0 +1,39 @@
+pipeline:
+  name: Java-build-with-template
+  identifier: Javabuildwithtemplate
+  projectIdentifier: RojaDevops
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: git
+        repoName: Harness-pipeline-practice
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  name: java-build
+                  identifier: javabuild
+                  template:
+                    templateRef: javamavenbuild
+                    versionLabel: v1
