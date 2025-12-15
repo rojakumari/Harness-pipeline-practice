@@ -1,0 +1,15 @@
+template:
+  name: docker-build-push
+  identifier: dockerbuildpush
+  versionLabel: v1
+  type: Step
+  projectIdentifier: RojaDevops
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: BuildAndPushDockerRegistry
+    spec:
+      connectorRef: account.harnessImage
+      repo: krojakumari/harness-practice
+      tags:
+        - v1
