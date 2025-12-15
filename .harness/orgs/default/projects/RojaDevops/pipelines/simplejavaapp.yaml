@@ -23,14 +23,6 @@ pipeline:
             override: true
           buildIntelligence:
             enabled: true
-          infrastructure:
-            type: VM
-            spec:
-              type: Pool
-              spec:
-                poolName: harnessCI
-                harnessImageConnectorRef: account.harnessImage
-                os: Linux
           execution:
             steps:
               - step:
@@ -40,3 +32,9 @@ pipeline:
                   spec:
                     shell: Sh
                     command: mvn clean install
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
