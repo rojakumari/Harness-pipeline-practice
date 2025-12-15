@@ -12,4 +12,4 @@ template:
       connectorRef: docker
       image: bitnami/kubectl:latest
       shell: Sh
-      command: kubectl apply -f <+input.manifestPath>
+      command: kubectl apply -n <+input.namespace> -f <+input.manifestPath>
